@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles</title>
+</head>
+<body>
+    <header>
+        <a class="logo" href="{% url 'blog:index' %}"><h1 ><span>Web</span>Blog</h1></a>
+        <nav>
+            <ul class="nav__links">
+                
+                {% for category in categories %}
+                    <li><a href="{% url 'blog:category' category.slug %}">{{ category.name }}</a></li>
+                {% endfor %}
+                <li><a href="{% url 'blog:category' 'latest' %}">Eng so'ngilar</a></li>
+                <li><a href="{% url 'blog:category' 'popular' %}">Ommabop</a></li>
+                <li>
+                    <form action="{% url 'blog:search' %}" method="POST">
+                        <input type="text" name="search" placeholder="Search" required>
+                        {% csrf_token %}
+                        <input type="submit" value="Search">
+                    </form>
+                </li>
+                <!-- <li><a href="#">Sign In</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+
+    
+    {% block content %}
+        
+    {% endblock content %}
+        
+    
+
+    <footer>
+       <ul class="nav__links">
+           <li><a href="">About Us</a></li>
+           <li><a href="">Contect</a></li>
+           <li><a href="">Our Team</a></li>
+           <li><a href="">Advertisement</a></li>
+       </ul>
+    </footer>
+    <div class="btm">
+        <div class="btm-left">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde debitis veniam amet magnam vero molestiae sequi possimus laborum corrupti et quis, deleniti labore consectetur nisi enim, sapiente eius numquam natus.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tempore at eligendi accusamus delectus architecto eveniet ad consequuntur incidunt alias.</p>
+        </div>
+        <div class="btm-right">
+            <ul class="nav__links">
+                <li>
+                    <a href=""><img src="{% static 'images/tw.svg' %}" alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="{% static 'images/tg.svg' %} " alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="{% static 'images/in.svg' %} " alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="{% static 'images/fb.svg' %} " alt=""></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

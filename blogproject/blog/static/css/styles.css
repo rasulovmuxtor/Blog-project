@@ -1,0 +1,338 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header li, a, button{
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+}
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 2%;
+    align-items: center;
+    /* background-color: thistle; */
+    border-bottom: 1px solid wheat;
+    margin-bottom: 10px;
+    background-color: whitesmoke;
+}
+.logo{
+    margin-right: auto;
+    cursor: pointer;
+    font-family: sans-serif;
+    color: coral;
+}
+
+header h1 span{
+    color: blue;
+}
+.nav__links{
+    list-style: none;
+}
+.nav__links li{
+    display: inline-block;
+    padding: 0px 10px;
+}
+.nav__links li a{
+    color:blue;
+    transition: all 0.3s ease 0s;
+}
+.nav__links li a:hover{
+    transition: all 0.3s ease 0s;
+    color:coral;
+}
+.nav__links li input{
+    transition: all 0.3s ease 0s;
+    padding: 3px;
+    margin-right: 0;
+    border:2px solid coral;
+    background-color: whitesmoke;
+}
+.nav__links li input:nth-child(2){
+    padding: 5px;
+    margin-left: 0;
+    border: none;
+    background-color: coral;
+    border-radius: 2px;
+}
+.nav__links li input:hover{
+    border-color:wheat;
+}
+.nav__links li input:nth-child(2):hover{
+    border-color: coral;
+    cursor: pointer;
+}
+
+/* @media(max-width:800px){
+    #main-top{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+} */
+
+#main-top{
+    display: flex;
+    background-color:whitesmoke;
+    border-bottom: 1px solid wheat;
+    padding: 10px 2%;
+    /* margin-bottom: 20px; */
+}
+.pin{
+    display: flex;
+    order: 2;
+    max-width: 45%;
+}
+.latest{
+    display: flex;
+    order: 1;
+    max-width: 35%;
+    flex-direction: column;
+    margin-top: 5px;
+
+}
+.popular{
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    max-width: 20%;
+    margin-top: 5px;
+}
+
+.post-info{
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+.post-info p{
+    margin-right: 5px;
+}
+.post-info a{
+    font-weight: 200;
+    font-family: serif;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.post-info a:hover{
+    text-decoration: underline;
+    color: #0011ff;
+}
+#pin-post{
+    /* max-width: 500px; */
+    max-width: 500px;
+    margin: 5px 20px;
+    padding: 5px;
+    /* align-items: center; */
+}
+#pin-a{
+    color: black;
+    font-size: 22px;
+}
+#pin-post a:hover{
+    text-decoration: underline;
+}
+#pin-post img{
+    max-width: 500px;
+    max-height: 400px;
+}
+.latest-item{
+    display: flex;
+    padding: 8px 0;
+    align-items: flex-start;
+    flex-direction: row;
+    border-bottom: 1px solid wheat ;
+}
+.latest-item-box{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+}
+.latest-item img{
+    max-width: 120px;
+    max-height: 200px;
+}
+.a-sm{
+    color: black;
+}
+.a-sm:hover{
+    text-decoration: underline;
+}
+.popular-item{
+    margin: 8px 0;
+    border-bottom: 1px solid wheat ;
+}
+.category{
+    color: blue;
+    font-weight: 550;
+    font-size: 20px;
+    margin-bottom: 7px;
+    font-family: fantasy;
+}
+.category-2{
+    margin: 15px 0;
+    text-align: center;
+}
+.category-2 a{
+    color: blue;
+    font-weight: 600;
+    font-size: 28px;
+    font-family: sans-serif;
+}
+#main-bottom{
+    display: flex;
+    background-color:whitesmoke;
+    border-bottom: 1px solid wheat;
+    padding: 10px 2%;
+}
+.main-bottom-left{
+    display: flex;
+    width: 65%;
+    flex-wrap: wrap;
+}
+.main-bottom-right{
+    display: flex;
+    width: 35%;
+    flex-direction: column;  
+}
+.left-item{
+    margin: 5px 10px 10px 0;
+    max-width: 390px;
+    border-bottom: 1px solid wheat;
+}
+.left-item img{
+    max-width: 390px;
+    max-height: 300px;
+}
+footer{
+    display: flex;
+    margin-top: 20px;
+    padding: 20px 2%;
+    background-color: wheat;
+    border-bottom: 1px solid rgb(240, 120, 120);
+}
+.btm{
+    display: flex;
+    padding: 20px 2%;
+    background-color:#343835;
+    padding-bottom: 40px;
+    border-bottom: 1px solid wheat;
+    color: white;
+}
+.btm-left{
+    padding-right: 30px;
+    width: 85%;
+}
+.btm-left p{
+    margin: 10px 0;
+}
+.btm-right{
+    width: 15%;
+}
+#post-page{
+    display: flex;
+    margin-top: 20px;
+    padding: 0 2%;
+}
+.post-content{
+    width: 65%;
+    margin-right: 20px;
+    padding: 20px 30px 40px 30px;
+    background-color: whitesmoke;
+}
+.post-content img{
+    max-width: 100%;
+}
+#header-img{
+    width: 100%;
+    height: auto;
+
+}
+.post-right{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+.post-item{
+    display: flex;
+    padding: 8px 0;
+    align-items: flex-start;
+    flex-direction: row;
+}
+.post-item-box{
+    display: flex;
+    flex-direction: column;
+}
+.post-item img{
+    max-width: 140px;
+    max-height: 220px;
+    margin-right: 12px;
+    border-radius: 2%;
+}
+#head-title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: blue;
+}
+.reset *{
+    all: revert;
+}
+
+.category-2 p{
+    margin-left: 0;
+}
+.pagination { 
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.pagination a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+.pagination .btn  {
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+}
+
+.pagination .btn:hover{
+    background-color: wheat;
+    color: blue;
+}
+.search-container{
+    padding: 20px 30px;
+    background-color: whitesmoke;
+}
+.comments input,textarea{
+    display: flex;
+    padding: 5px 8px;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border:2px solid coral;
+} 
+.comment-submit{
+    padding: 3px;
+    margin-right: 0;
+    border:2px solid coral;
+}
+.comments li{
+    list-style: none;
+    margin-top:10px ;
+    font-weight: bolder;
+}
+.comments ul p{
+    font-weight: lighter;
+    font-style: italic;
+}

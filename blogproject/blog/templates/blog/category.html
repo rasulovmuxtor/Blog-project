@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="category-2">
+    <a href="category/{{item.0.slug}}">{{item.0.name}}</a>
+</div>
+        <div id="main-bottom">
+            <div class="main-bottom-left">         
+                {% for post in posts|slice:":4" %}
+                    <div class="left-item">
+                        <img src="{{ post.image.url}}" alt="">
+                        <div class="post-info">
+                            <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                            <p>&#128065; {{ post.views }}</p>
+                        </div>
+                        <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="main-bottom-right">
+                {% for post in posts|slice:"4:" %}
+                    <div class="latest-item">
+                        <img src="{{ post.image.url}}" alt="">
+                        <div class="latest-item-box">
+                            <div class="post-info">
+                                <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                                <p>&#128065; {{ post.views }}</p>
+                            </div>
+                            <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}<a>
+                        </div>
+    
+                    </div>
+                {% endfor %}  
+            </div>
+</div>
+<div class="pagination">
+    {% if posts.has_previous %}
+        <a class="btn" href="?page={{ posts.previous_page_number }}">&#8249;</a>
+    {% endif %}
+    {% if posts.has_next %}
+        <a class="btn" href="?page={{ posts.next_page_number }}">&#8250;</a>
+    {% endif %}
+</div>
+
+{% endblock content %}
+    
+
+    

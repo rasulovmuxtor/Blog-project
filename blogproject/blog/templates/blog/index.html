@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id='main-top'>
+        <div class="pin">
+            <div id="pin-post">
+                <img src="{{ pin.image.url }}" alt="{{pin.title}}">
+                <div class="post-info">
+                    <a href="{{pin.category_url}}">{{pin.category}}</a>
+                    <p>{{ pin.publish_at | date:"h:s  d.m.Y" }}</p>
+                    <p>&#128065; {{ pin.views }}</p>
+                </div>
+                <a id="pin-a" href="{{ pin.get_absolute_url }}">{{pin.title}}</a>
+                <p>{{ pin.caption }}</p>
+            </div>
+        </div>
+
+        <div class="latest">
+            <a href="{% url 'blog:category' 'latest' %}" class="category">Eng so'ngilar</a>
+            
+            {% for post in latest %}
+                <div class="latest-item">
+                    <img src="{{ post.image.url }}" alt="">
+                    <div class="latest-item-box">
+                        <div class="post-info">
+                            <a href="{{post.category_url}}">{{post.category}}</a>
+                            <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                            <p>&#128065; {{ post.views }}</p>
+                        </div>
+                        <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+        
+        
+        <div class="popular">
+            <a href="{% url 'blog:category' 'popular' %}" class="category">Ommabop</a>  
+            {% for post in popular %}
+                <div class="popular-item">
+                    <div class="post-info">
+                        <a href="{{post.category_url}}">{{post.category}}</a>
+                        <p>{{ post.publish_at | date:"d.m.Y" }}</p>
+                        <p>&#128065; {{ post.views }}</p>
+                    </div>
+                    <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+    
+    
+        
+        {% for item in category_list %}
+            <div class="category-2">
+            <a href="/{{item.0.slug}}">{{item.0.name}}</a>
+            </div>
+            <div id="main-bottom">
+                <div class="main-bottom-left">
+                    {% for post in item.1|slice:":2" %}
+                
+                    <div class="left-item">
+                        <img src="{{ post.image.url}}" alt="">
+                        <div class="post-info">
+                            <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                            <p>&#128065; {{ post.views }}</p>
+                        </div>
+                        <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="main-bottom-right">
+                    <!-- <p class="category">Recommendation</p> -->
+                    
+                    {% for post in item.1|slice:"2:" %}
+                        <div class="latest-item">
+                        <!-- <div> -->
+                            <img src="{{ post.image.url}}" alt="">
+                        <!-- </div> -->
+                            <div class="latest-item-box">
+                                <div class="post-info">
+                                    <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                                    <p>&#128065; {{ post.views }}</p>
+                                </div>
+                                <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}<a>
+                            </div>
+        
+                        </div>
+                    {% endfor %}
+                        
+                    
+                </div>
+
+                
+            </div>
+                
+        {% endfor %}
+
+{% endblock %}

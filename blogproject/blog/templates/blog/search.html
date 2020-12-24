@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="search-container">
+{% if posts %}
+    <h1 class='category'>"{{ query }}" dan iborat postlar</h1>
+    <h3>
+    {% with posts.count as total_posts %}
+        {{ total_posts }} ta natija topildi!
+    {% endwith %}
+    </h3>
+    {% for post in posts %}
+        <div class="latest-item">
+            <img src="{{ post.image.url }}" alt="">
+            <div class="latest-item-box">
+                <div class="post-info">
+                    <a href="{{post.category_url}}">{{post.category}}</a>
+                    <p>{{ post.publish_at | date:"h:s  d.m.Y" }}</p>
+                    <p>&#128065; {{ post.views }}</p>
+                </div>
+                <a class="a-sm" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Hech narsa topilmadi!</p>
+    <a href="{% url 'blog:index' %}" class="category">Bosh sahifa</a>
+{% endif %}
+</div>
+{% endblock content %}
+    
+
+    

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="post-page">
+        <div class="post-content">
+            <div class="post-info">
+                <a href="{{post.category_url}}">{{post.category}}</a>
+                <p>{{post.publish_at | date:"h:s  d.m.Y"}}</p>
+                <p>&#128065; {{post.views}}</p>
+            </div>
+            <img id="header-img" src="{{post.image.url}}" alt="">
+            <h2 id="head-title">{{post.title}}</h2>
+            <span class="reset">
+                {{post.body|safe}}
+            </span>
+        
+        <div class="comments">
+            {% if new_comment %}
+                <h2>Izohingiz saqlandi</h2>
+            {% else %}
+                <h2>Izoh qoldiring:</h2>
+            {% endif %}
+            <form method="post">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <p><input class="comment-submit" type="submit" value="Izoh qo'shish"></p>
+            </form>
+            <h2>Izohlar</h2>
+            <ul>
+                {% for comment in comments %}
+                <li>
+                    {{comment.name}}:
+                </li>
+                <p>{{ comment.body }}</p>
+           
+                {% endfor %}
+            </ul>
+           
+            
+        </div>
+         
+        </div>
+
+        <div class="post-right">
+
+            <a href="{% url 'blog:category' 'latest' %}" class="category">Eng so'ngilar</a>  
+            {% for item in latest %}
+                <div class="post-item">
+                    <img src="{{item.image.url}}" alt="">
+                    <div class="page-item-box">
+                        <div class="post-info">
+                            <a href="{{item.category_url}}">{{item.category}}</a>
+                            <p>{{item.publish_at | date:"h:s  d.m.Y"}}</p>
+                            <p>&#128065; {{item.views}}</p>
+                        </div>
+                        <a class="a-sm" href="{{ item.get_absolute_url }}">{{item.title}}</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+    
